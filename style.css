@@ -33,15 +33,17 @@
 }
 #slide4:checked ~ #slides .inner {
    margin-left: -300%;
+}#slide5:checked ~ #slides .inner {
+   margin-left: -400%;
 }
 #slides .inner {
    transition: margin-left 800ms cubic-bezier(0.77, 0, 0.175, 1);
-   width: 400%;
+   width: 500%;
    line-height: 0;
    height: 300px;
 }
 #slides .slide {
-   width: 25%;
+   width: 20%;
    float: left;
    display: flex;
    justify-content: center;
@@ -60,6 +62,9 @@
 }
 #slides .slide_4 {
    background: #00a8e8;
+}
+#slides .slide_5 {
+   background: #003459;
 }
 #controls {
    margin: -180px 0 0 0;
