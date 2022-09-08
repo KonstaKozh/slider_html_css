@@ -1,223 +1,103 @@
-#slider {
-   width: 954px;
-   margin: 0 0 0 auto;
-   max-width: 100%;
-   text-align: center;
-}
-#slider input[type="radio"] {
-   display: none;
-}
-#slider label {
-   cursor: pointer;
-   text-decoration: none;
-}
-#slides {
-   border: 1px solid #ccc;
-   background: #fff;
-   position: relative;
-   z-index: 1;
+body {
+   background-color: #fff;
 }
 
-#overflow {
+.slider {
+   position: relative;
+   width: 934px;
+   margin: 50px auto;
+}
+
+.slider input[name="switch"] {
+   display: none;
+}
+
+.switch {
+   position: absolute;
+   left: 0;
+   bottom: -40px;
+   text-align: center;
    width: 100%;
+}
+
+.switch label {
+   display: inline-block;
+   width: 8px;
+   height: 8px;
+   cursor: pointer;
+   margin: 0 3px;
+   box-shadow: 0 0 2px 0 rgba(0, 0, 0, .8);
+   border-radius: 50%;
+   border: 5px solid #2f363c;
+   background-color: #738290;
+}
+
+#btn1:checked~.switch label[for="btn1"] {
+   background-color: white;
+}
+
+#btn2:checked~.switch label[for="btn2"] {
+   background-color: white;
+}
+
+#btn3:checked~.switch label[for="btn3"] {
+   background-color: white;
+}
+
+.slider-inner {
    overflow: hidden;
 }
-#slide1:checked ~ #slides .inner {
-   margin-left: 0;
-}
-#slide2:checked ~ #slides .inner {
-   margin-left: -934px;
-}
-#slide3:checked ~ #slides .inner {
-   margin-left: calc(-934px * 2);
-}
-#slide4:checked ~ #slides .inner {
-   margin-left: calc(-934px * 3);
-}
-#slide5:checked ~ #slides .inner {
-   margin-left: calc(-934px * 4);
-}
-#slide6:checked ~ #slides .inner {
-   margin-left: calc(-934px * 5);
-}
-#slide7:checked ~ #slides .inner {
-   margin-left: calc(-934px * 6);
-}
-#slide8:checked ~ #slides .inner {
-   margin-left: calc(-934px * 7);
-}
-#slide9:checked ~ #slides .inner {
-   margin-left: calc(-934px * 8);
-}
-#slide10:checked ~ #slides .inner {
-   margin-left: calc(-934px * 9);
-}
-#slides .inner {
-   transition: margin-left 800ms cubic-bezier(0.77, 0, 0.175, 1);
-   width: 1600%;
-   line-height: 0;
-   height: 414px;
 
+.slides {
+   width: calc(934px*10);
+   transition: all 0.5s;
+   animation: slideAnim 80s cubic-bezier(0.7, 0.5, 0.1, 0.3) infinite;
 }
-/*@keyframes slide {*/
-/*   0%{*/
-/*      transform: translateX(0);*/
-/*   }*/
-/*   10%{*/
-/*      transform: translateX(0);*/
-/*   }*/
-/*   11%{*/
-/*      transform: translateX(-934px);*/
-/*   }*/
-/*   20%{*/
-/*      transform: translateX(-934px);*/
-/*   }*/
-/*   21%{*/
-/*      transform: translateX(calc(-934px * 2));*/
-/*   }*/
-/*   30%{*/
-/*      transform: translateX(calc(-934px * 2));*/
-/*   }*/
-/*   60%{*/
-/*      transform: translateX(calc(-934px * 5));*/
-/*   }*/
-/*   70%{*/
-/*      transform: translateX(calc(-934px * 6));*/
-/*   }*/
-/*   80%{*/
-/*      transform: translateX(calc(-934px * 7));*/
-/*   }*/
-/*   90%{*/
-/*      transform: translateX(calc(-934px * 8));*/
-/*   }*/
-/*   100%{*/
-/*      transform: translateX(calc(-934px * 9));*/
-/*   }*/
-/*}*/
-#slides .slide {
-   width: 734px;
+
+.slides:hover {
+   animation-play-state: paused;
+}
+
+@keyframes slideAnim {
+   0% { transform:translate(0); }
+   8% { transform:translate(0); }
+   9% { transform: translate(-934px); }
+   17% { transform: translate(-934px); }
+   18% {  transform: translate(calc(-934px*2));}
+   26% {  transform: translate(calc(-934px*2));}
+   27% {  transform: translate(calc(-934px*3));}
+   35% {  transform: translate(calc(-934px*3));}
+   36% {  transform: translate(calc(-934px*4));}
+   44% {  transform: translate(calc(-934px*4));}
+   45% {  transform: translate(calc(-934px*5));}
+   53% {  transform: translate(calc(-934px*5));}
+   54% {  transform: translate(calc(-934px*6));}
+   62% {  transform: translate(calc(-934px*6));}
+   63% {  transform: translate(calc(-934px*7));}
+   71% {  transform: translate(calc(-934px*7));}
+   72% {  transform: translate(calc(-934px*8));}
+   80% {  transform: translate(calc(-934px*8));}
+   81% {  transform: translate(calc(-934px*9));}
+   89% {  transform: translate(calc(-934px*9));}
+   91% {  transform: translate(0);}
+   100% {  transform: translate(0);}
+}
+
+.slides video {
    margin-left: 200px;
+   width: 680px;
+   height: 340px;
    float: left;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100%;
-   border-radius: 32px;
-   color: #fff;
 }
-/*#slides .slide_1 {*/
-/*   background: #00171f;*/
-/*}*/
-/*#slides .slide_2 {*/
-/*   background: #003459;*/
-/*}*/
-/*#slides .slide_3 {*/
-/*   background: #007ea7;*/
-/*}*/
-/*#slides .slide_4 {*/
-/*   background: #00a8e8;*/
-/*}*/
-/*#slides .slide_5 {*/
-/*   background: #003459;*/
-/*}*/
-#controls {
-   margin: -180px 0 0 0;
-   width: 100%;
-   height: 50px;
-   z-index: 3;
-   position: relative;
+
+#btn1:checked~.slider-inner .slides {
+   transform: translate(0);
 }
-#controls label {
-   transition: opacity 0.2s ease-out;
-   display: none;
-   width: 50px;
-   height: 50px;
-   opacity: 0.4;
+
+#btn2:checked~.slider-inner .slides {
+   transform: translate(-730px);
 }
-#controls label:hover {
-   opacity: 1;
-}
-#slide1:checked ~ #controls label:nth-child(2),
-#slide2:checked ~ #controls label:nth-child(3),
-#slide3:checked ~ #controls label:nth-child(4),
-#slide4:checked ~ #controls label:nth-child(5),
-#slide5:checked ~ #controls label:nth-child(6),
-#slide6:checked ~ #controls label:nth-child(7),
-#slide7:checked ~ #controls label:nth-child(8),
-#slide8:checked ~ #controls label:nth-child(9),
-#slide9:checked ~ #controls label:nth-child(10),
-#slide10:checked ~ #controls label:nth-child(1) {
-   background: url(https://image.flaticon.com/icons/svg/130/130884.svg)
-   no-repeat;
-   float: right;
-   margin: 0 -50px 0 0;
-   display: block;
-}
-#slide1:checked ~ #controls label:nth-last-child(2),
-#slide2:checked ~ #controls label:nth-last-child(3),
-#slide3:checked ~ #controls label:nth-last-child(4),
-#slide4:checked ~ #controls label:nth-last-child(5),
-#slide5:checked ~ #controls label:nth-last-child(6),
-#slide6:checked ~ #controls label:nth-last-child(7),
-#slide7:checked ~ #controls label:nth-last-child(8),
-#slide8:checked ~ #controls label:nth-last-child(9),
-#slide9:checked ~ #controls label:nth-last-child(10),
-#slide10:checked ~ #controls label:nth-last-child(1) {
-   background: url(https://image.flaticon.com/icons/svg/130/130882.svg)
-   no-repeat;
-   float: left;
-   margin: 0 0 0 -50px;
-   display: block;
-}
-#bullets {
-   margin: 150px 0 0;
-   text-align: center;
-}
-#bullets label {
-   display: inline-block;
-   width: 10px;
-   height: 10px;
-   border-radius: 100%;
-   background: #ccc;
-   margin: 0 10px;
-}
-#slide1:checked ~ #bullets label:nth-child(1),
-#slide2:checked ~ #bullets label:nth-child(2),
-#slide3:checked ~ #bullets label:nth-child(3),
-#slide4:checked ~ #bullets label:nth-child(4),
-#slide5:checked ~ #bullets label:nth-child(5),
-#slide6:checked ~ #bullets label:nth-child(6),
-#slide7:checked ~ #bullets label:nth-child(7),
-#slide8:checked ~ #bullets label:nth-child(8),
-#slide9:checked ~ #bullets label:nth-child(9),
-#slide10:checked ~ #bullets label:nth-child(10) {
-   background: #444;
-}
-@media screen and (max-width: 900px) {
-   #slide1:checked ~ #controls label:nth-child(2),
-   #slide2:checked ~ #controls label:nth-child(3),
-   #slide3:checked ~ #controls label:nth-child(4),
-   #slide4:checked ~ #controls label:nth-child(5),
-   #slide5:checked ~ #controls label:nth-child(6),
-   #slide6:checked ~ #controls label:nth-child(7),
-   #slide7:checked ~ #controls label:nth-child(8),
-   #slide8:checked ~ #controls label:nth-child(9),
-   #slide9:checked ~ #controls label:nth-child(10),
-   #slide10:checked ~ #controls label:nth-child(1),
-   #slide1:checked ~ #controls label:nth-last-child(2),
-   #slide2:checked ~ #controls label:nth-last-child(3),
-   #slide3:checked ~ #controls label:nth-last-child(4),
-   #slide4:checked ~ #controls label:nth-last-child(5),
-   #slide5:checked ~ #controls label:nth-last-child(6),
-   #slide6:checked ~ #controls label:nth-last-child(7),
-   #slide7:checked ~ #controls label:nth-last-child(8),
-   #slide8:checked ~ #controls label:nth-last-child(9),
-   #slide9:checked ~ #controls label:nth-last-child(10),
-   #slide10:checked ~ #controls label:nth-last-child(1) {
-      margin: 0;
-   }
-   #slides {
-      max-width: calc(100% - 140px);
-      margin: 0 auto;
-   }
+
+#btn3:checked~.slider-inner .slides {
+   transform: translate(-1460px);
 }
