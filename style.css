@@ -1,11 +1,12 @@
 body {
-   background-color: #fff;
+   /*background-color: #fff;*/
 }
 
 .slider {
    position: relative;
    width: 934px;
    margin: 50px auto;
+   cursor: pointer;
 }
 
 .slider input[name="switch"] {
@@ -15,34 +16,38 @@ body {
 .switch {
    position: absolute;
    left: 0;
+   transform: translateX(50%);
    bottom: -40px;
-   text-align: center;
+   /*text-align: center;*/
    width: 100%;
 }
 
 .switch label {
    display: inline-block;
-   width: 8px;
-   height: 8px;
+   width: 9px;
+   height: 9px;
    cursor: pointer;
-   margin: 0 3px;
-   box-shadow: 0 0 2px 0 rgba(0, 0, 0, .8);
+   margin: 0 1px;
    border-radius: 50%;
-   border: 5px solid #2f363c;
-   background-color: #738290;
+   background-color: rgba(33, 32, 31, 0.5);
+}
+.switch label:hover {
+   background-color: rgba(128, 128, 128, 1);
 }
 
-#btn1:checked~.switch label[for="btn1"] {
-   background-color: white;
+#btn1:checked~.switch label[for="btn1"],
+#btn2:checked~.switch label[for="btn2"],
+#btn3:checked~.switch label[for="btn3"],
+#btn4:checked~.switch label[for="btn4"],
+#btn5:checked~.switch label[for="btn5"],
+#btn6:checked~.switch label[for="btn6"],
+#btn7:checked~.switch label[for="btn7"],
+#btn8:checked~.switch label[for="btn8"],
+#btn9:checked~.switch label[for="btn9"],
+#btn10:checked~.switch label[for="btn10"] {
+   background-color: #000;
 }
 
-#btn2:checked~.switch label[for="btn2"] {
-   background-color: white;
-}
-
-#btn3:checked~.switch label[for="btn3"] {
-   background-color: white;
-}
 
 .slider-inner {
    overflow: hidden;
@@ -51,7 +56,7 @@ body {
 .slides {
    width: calc(934px*10);
    transition: all 0.5s;
-   animation: slideAnim 80s cubic-bezier(0.7, 0.5, 0.1, 0.3) infinite;
+   /*animation: slideAnim 80s cubic-bezier(0.7, 0.5, 0.1, 0.3) infinite;*/
 }
 
 .slides:hover {
@@ -93,11 +98,31 @@ body {
 #btn1:checked~.slider-inner .slides {
    transform: translate(0);
 }
-
 #btn2:checked~.slider-inner .slides {
-   transform: translate(-730px);
+   transform: translate(-934px);
+}
+#btn3:checked~.slider-inner .slides {
+   transform: translate(calc(-934px*2));
+}
+#btn4:checked ~ .slider-inner .slides {
+   transform: translate(calc(-934px*3));
+}
+#btn5:checked ~ .slider-inner .slides {
+   transform: translate(calc(-934px*4));
+}
+#btn6:checked ~ .slider-inner .slides {
+   transform: translate(calc(-934px*5));
+}
+#btn7:checked ~ .slider-inner .slides {
+   transform: translate(calc(-934px*6));
+}
+#btn8:checked ~ .slider-inner .slides {
+   transform: translate(calc(-934px*7));
+}
+#btn9:checked ~ .slider-inner .slides {
+   transform: translate(calc(-934px*8));
+}
+#btn10:checked ~ .slider-inner .slides {
+   transform: translate(calc(-934px*9));
 }
 
-#btn3:checked~.slider-inner .slides {
-   transform: translate(-1460px);
-}
