@@ -76,5 +76,28 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    let nextSlide = function () {
+
+    }
+    let counter = 1;
+    setInterval(function() {
+        document.getElementById('btn' + counter).checked = true;
+        counter++;
+        if (counter > 10) {
+            counter = 1;
+        }
+    }, 5000)
+    let handle;
+    function autoPlay() {
+        clearInterval(handle);
+        handle = setInterval(function() {
+            nextSlide()
+        }, 5000);
+    }
+
+    autoPlay();
+
+</script>
 </body>
 </html>
