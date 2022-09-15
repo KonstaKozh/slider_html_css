@@ -32,7 +32,7 @@
     </div>
 
     <div class="slider-inner">
-        <div class="slides">
+        <div class="slides" id="slides">
             <video class="slide slide_1" controls="" preload="auto" style="width: 734px; height: 414px; border-radius: 32px; border: none" pip="false">
                 <source src="https://streaming.video.yandex.ru/get/yndx-video/m-42220-17a7be0554e-ca9878b3e384ce9b/720p.mp4" type="video/mp4">
                 <source src="https://streaming.video.yandex.ru/get/yndx-video/m-42220-17a7be0554e-ca9878b3e384ce9b/720p.webm" type="video/webm">
@@ -76,29 +76,34 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
     let counter = 1;
     let nextSlide = function () {
-        document.getElementById('btn' + counter).checked = true;
+        if (counter < 0 || counter === 10) {
+            counter = 0;
+        }
         counter++;
-        if (counter > 10) {
-            counter = 1;
+        document.getElementById('btn' + counter).checked = true;
+    }
+
+    let slider = document.getElementsByClassName("slider")[0]
+    let timeoutArea = slider.addEventListener('mouseover', isHover);
+    function isHover(e) {
+        // console.log(e.target.className);
+        if (e.target.className === 'switch') {
+            console.log('switch')
         }
     }
 
-    // setInterval(function() {
-    //     document.getElementById('btn' + counter).checked = true;
-    //     counter++;
-    //     if (counter > 10) {
-    //         counter = 1;
-    //     }
-    // }, 5000)
     let handle;
     function autoPlay() {
         clearInterval(handle);
         handle = setInterval(function() {
+            counter = +document.querySelector('input[name="switch"]:checked').id.slice(3)
+            console.log(counter)
             nextSlide()
-        }, 5000);
+        }, 7000);
     }
 
     autoPlay();
