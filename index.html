@@ -78,22 +78,22 @@
 </div>
 
 <script type="text/javascript">
-    let counter = 1;
-    const nextSlide = function () {
-        if (counter < 0 || counter === 10) {
-            counter = 0;
-        }
-        const isHover = function(e) {
-            // console.log(e.target.className);
-            if (e.target.className === 'switch') {
-                console.log('switch', counter)
-            }
-        }
-        let slider = document.getElementsByClassName("slider")[0]
-        slider.addEventListener('mouseover', isHover);
-        counter++;
-        document.getElementById('btn' + counter).checked = true;
-    }
+    // let counter = 1;
+    // const nextSlide = function () {
+    //     if (counter < 0 || counter === 10) {
+    //         counter = 0;
+    //     }
+    //     const isHover = function(e) {
+    //         // console.log(e.target.className);
+    //         if (e.target.className === 'switch') {
+    //             console.log('switch', counter)
+    //         }
+    //     }
+    //     let slider = document.getElementsByClassName("slider")[0]
+    //     slider.addEventListener('mouseover', isHover);
+    //     counter++;
+    //     document.getElementById('btn' + counter).checked = true;
+    // }
 
     // const isHover = (e) => {
     //     // console.log(e.target.className);
@@ -104,46 +104,56 @@
     // let slider = document.getElementsByClassName("slider")[0]
     // let timeoutArea = slider.addEventListener('mouseover', isHover);
 
-    let handle;
-    function autoPlay() {
-        clearInterval(handle);
-        handle = setInterval(function() {
-            counter = +document.querySelector('input[name="switch"]:checked').id.slice(3)
-            console.log(counter)
-            nextSlide()
-        }, 7000);
-    }
-
-    autoPlay();
+    // let handle;
+    // function autoPlay() {
+    //     clearInterval(handle);
+    //     handle = setInterval(function() {
+    //         counter = +document.querySelector('input[name="switch"]:checked').id.slice(3)
+    //         console.log(counter)
+    //         nextSlide()
+    //     }, 7000);
+    // }
+    //
+    // autoPlay();
 
 </script>
 <!--======================================================-->
-<ul id="slides">
-        <li class="slide showing">Slide 1</li>
-        <li class="slide">Slide 2</li>
-        <li class="slide">Slide 3</li>
-        <li class="slide">Slide 4</li>
-        <li class="slide">Slide 5</li>
-    </ul>
+<!--<ul id="slides">-->
+<!--        <li class="slide showing">Slide 1</li>-->
+<!--        <li class="slide">Slide 2</li>-->
+<!--        <li class="slide">Slide 3</li>-->
+<!--        <li class="slide">Slide 4</li>-->
+<!--        <li class="slide">Slide 5</li>-->
+<!--    </ul>-->
 <script>
-    let para = document.getElementById("slides");
-    let slides = para.querySelectorAll('.slide');
+    let switchBtn = document.querySelector(".switch");
+    console.log(switchBtn)
+    const para = document.getElementById("slides");
+    const slides = para.querySelectorAll('.slide');
     let currentSlide = 0;
     let d;
     function nextSlide() {
         window.clearTimeout(d);
-        slides[currentSlide].classList.remove("showing");
+        // slides[currentSlide].classList.remove("showing");
         currentSlide = (currentSlide+1)%slides.length;
+        console.log(currentSlide, slides.length)
+        document.getElementById('btn' + (currentSlide+1)).checked = true;
         slides[currentSlide].classList.add("showing");
-        d = window.setTimeout(nextSlide,2000)
+        d = window.setTimeout(nextSlide,3000)
     }
+    para.addEventListener("mouseleave", function(event) {
+        setTimeout(nextSlide, 4000)
+    });
     para.addEventListener("mouseenter", function(event) {
-                nextSlide()
- });
-        para.addEventListener("mouseleave", function(event) {
-                window.clearTimeout(d)
-            });
-
+            window.clearTimeout(d)
+    });
+    switchBtn.addEventListener("mouseleave", function(event) {
+        setTimeout(nextSlide, 4000)
+    });
+    switchBtn.addEventListener("mouseenter", function(event) {
+            window.clearTimeout(d)
+    });
+    setTimeout(nextSlide, 4000)
 </script>
 
 </body>

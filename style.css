@@ -6,7 +6,6 @@ body {
    position: relative;
    width: 934px;
    margin: 50px auto;
-   cursor: pointer;
 }
 
 .slider input[name="switch"] {
@@ -15,11 +14,9 @@ body {
 
 .switch {
    position: absolute;
-   left: 0;
+   left: calc(25% + 200px);;
    transform: translateX(50%);
    bottom: -40px;
-   /*text-align: center;*/
-   width: 100%;
 }
 
 .switch label {
@@ -30,6 +27,7 @@ body {
    margin: 0 1px;
    border-radius: 50%;
    background-color: rgba(33, 32, 31, 0.5);
+
 }
 .switch label:hover {
    background-color: rgba(128, 128, 128, 1);
@@ -55,7 +53,7 @@ body {
 
 .slides {
    width: calc(934px*10);
-   transition: all 0.5s;
+   transition: all 1.5s;
    /*animation: slideAnim 80s cubic-bezier(0.7, 0.5, 0.1, 0.3) infinite;*/
 }
 
@@ -93,6 +91,7 @@ body {
    width: 680px;
    height: 340px;
    float: left;
+   cursor: pointer;
 }
 
 #btn1:checked~.slider-inner .slides {
