@@ -76,55 +76,6 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    // let counter = 1;
-    // const nextSlide = function () {
-    //     if (counter < 0 || counter === 10) {
-    //         counter = 0;
-    //     }
-    //     const isHover = function(e) {
-    //         // console.log(e.target.className);
-    //         if (e.target.className === 'switch') {
-    //             console.log('switch', counter)
-    //         }
-    //     }
-    //     let slider = document.getElementsByClassName("slider")[0]
-    //     slider.addEventListener('mouseover', isHover);
-    //     counter++;
-    //     document.getElementById('btn' + counter).checked = true;
-    // }
-
-    // const isHover = (e) => {
-    //     // console.log(e.target.className);
-    //     if (e.target.className === 'switch') {
-    //         console.log('switch')
-    //     }
-    // }
-    // let slider = document.getElementsByClassName("slider")[0]
-    // let timeoutArea = slider.addEventListener('mouseover', isHover);
-
-    // let handle;
-    // function autoPlay() {
-    //     clearInterval(handle);
-    //     handle = setInterval(function() {
-    //         counter = +document.querySelector('input[name="switch"]:checked').id.slice(3)
-    //         console.log(counter)
-    //         nextSlide()
-    //     }, 7000);
-    // }
-    //
-    // autoPlay();
-
-</script>
-<!--======================================================-->
-<!--<ul id="slides">-->
-<!--        <li class="slide showing">Slide 1</li>-->
-<!--        <li class="slide">Slide 2</li>-->
-<!--        <li class="slide">Slide 3</li>-->
-<!--        <li class="slide">Slide 4</li>-->
-<!--        <li class="slide">Slide 5</li>-->
-<!--    </ul>-->
 <script>
     const switchBtn = document.querySelector(".switch");
     const para = document.getElementById("slides");
@@ -135,10 +86,10 @@
         window.clearTimeout(d);
         currentSlide = (currentSlide+1)%slides.length;
         console.log(currentSlide, slides.length)
-        currentSlide = +document.querySelector('input[name="switch"]:checked').id.slice(3)-1
+        currentSlide = +document.querySelector('input[name="switch"]:checked').id.slice(3)
         console.log('currentSlide', currentSlide)
+        if (currentSlide===10) currentSlide=0
         document.getElementById('btn' + (currentSlide+1)).checked = true;
-        // currentSlide=++currentSlide
         d = window.setTimeout(nextSlide,3000)
     }
     para.addEventListener("mouseleave", function(event) {
