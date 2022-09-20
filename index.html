@@ -88,7 +88,7 @@
         console.log(currentSlide, slides.length)
         currentSlide = +document.querySelector('input[name="switch"]:checked').id.slice(3)
         console.log('currentSlide', currentSlide)
-        if (currentSlide===10) currentSlide=0
+        if (currentSlide === slides.length) currentSlide=0
         document.getElementById('btn' + (currentSlide+1)).checked = true;
         d = window.setTimeout(nextSlide,3000)
     }
