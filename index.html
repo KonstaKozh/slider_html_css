@@ -85,17 +85,15 @@
     function nextSlide() {
         window.clearTimeout(d);
         currentSlide = (currentSlide+1)%slides.length;
-        console.log(currentSlide, slides.length)
         currentSlide = +document.querySelector('input[name="switch"]:checked').id.slice(3)
-        console.log('currentSlide', currentSlide)
         if (currentSlide === slides.length) currentSlide=0
         document.getElementById('btn' + (currentSlide+1)).checked = true;
         d = window.setTimeout(nextSlide,3000)
     }
-    para.addEventListener("mouseleave", function(event) {
+    para.addEventListener("mouseout", function(event) {
         setTimeout(nextSlide, 4000)
     });
-    para.addEventListener("mouseenter", function(event) {
+    para.addEventListener("mouseover", function(event) {
             window.clearTimeout(d)
     });
     switchBtn.addEventListener("mouseleave", function(event) {
@@ -104,6 +102,17 @@
     switchBtn.addEventListener("mouseenter", function(event) {
             window.clearTimeout(d)
     });
+
+    // const video = document.querySelector('video')
+    // console.log(video)
+    para.addEventListener('play',function(event) {
+        console.log(event)
+        window.clearTimeout(d)
+    }, false);
+    document.querySelector('video').addEventListener('ended', function(event) {
+        setTimeout(nextSlide, 4000)
+    }, false);
+
     setTimeout(nextSlide, 4000)
 </script>
 
