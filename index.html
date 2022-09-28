@@ -3,7 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>SliderOnlyHTMLCSS</title>
-    <link rel="stylesheet" href="style.css">
+<!--    <link rel="stylesheet" href="style.css">-->
+    <style>
+       .slider {
+          position: relative;
+          width: 934px;
+          margin: 50px auto;
+       }
+
+       .slider input[name="switch"] {
+          display: none;
+       }
+
+       .switch {
+          position: absolute;
+          left: calc(25% + 200px);
+          transform: translateX(50%);
+          bottom: -40px;
+       }
+
+       .switch label {
+          display: inline-block;
+          width: 9px;
+          height: 9px;
+          cursor: pointer;
+          margin: 0 1px;
+          border-radius: 50%;
+          background-color: rgba(33, 32, 31, 0.5);
+
+       }
+       .switch label:hover {
+          background-color: rgba(128, 128, 128, 1);
+       }
+
+       #btn1:checked~.switch label[for="btn1"],
+       #btn2:checked~.switch label[for="btn2"],
+       #btn3:checked~.switch label[for="btn3"],
+       #btn4:checked~.switch label[for="btn4"],
+       #btn5:checked~.switch label[for="btn5"],
+       #btn6:checked~.switch label[for="btn6"],
+       #btn7:checked~.switch label[for="btn7"],
+       #btn8:checked~.switch label[for="btn8"],
+       #btn9:checked~.switch label[for="btn9"],
+       #btn10:checked~.switch label[for="btn10"] {
+          background-color: #000;
+       }
+
+
+       .slider-inner {
+          overflow: hidden;
+       }
+
+       .slides {
+          width: calc(934px*10);
+          transition: all 1.5s;
+          /*animation: slideAnim 80s cubic-bezier(0.7, 0.5, 0.1, 0.3) infinite;*/
+       }
+       .slides video {
+          margin-left: 200px;
+          width: 680px;
+          height: 340px;
+          float: left;
+          cursor: pointer;
+       }
+
+       #btn1:checked~.slider-inner .slides {
+          transform: translate(0);
+       }
+       #btn2:checked~.slider-inner .slides {
+          transform: translate(-934px);
+       }
+       #btn3:checked~.slider-inner .slides {
+          transform: translate(calc(-934px*2));
+       }
+       #btn4:checked ~ .slider-inner .slides {
+          transform: translate(calc(-934px*3));
+       }
+       #btn5:checked ~ .slider-inner .slides {
+          transform: translate(calc(-934px*4));
+       }
+       #btn6:checked ~ .slider-inner .slides {
+          transform: translate(calc(-934px*5));
+       }
+       #btn7:checked ~ .slider-inner .slides {
+          transform: translate(calc(-934px*6));
+       }
+       #btn8:checked ~ .slider-inner .slides {
+          transform: translate(calc(-934px*7));
+       }
+       #btn9:checked ~ .slider-inner .slides {
+          transform: translate(calc(-934px*8));
+       }
+       #btn10:checked ~ .slider-inner .slides {
+          transform: translate(calc(-934px*9));
+       }
+    </style>
 </head>
 <body>
 <div class="slider">
@@ -82,22 +176,23 @@
     const slides = para.querySelectorAll('.slide');
     let currentSlide = 0;
     let d;
+    const delay = 20000;
     function nextSlide() {
         window.clearTimeout(d);
         currentSlide = (currentSlide+1)%slides.length;
         currentSlide = +document.querySelector('input[name="switch"]:checked').id.slice(3)
         if (currentSlide === slides.length) currentSlide=0
         document.getElementById('btn' + (currentSlide+1)).checked = true;
-        d = window.setTimeout(nextSlide,3000)
+        d = window.setTimeout(nextSlide, delay)
     }
     para.addEventListener("mouseout", function(event) {
-        setTimeout(nextSlide, 4000)
+        setTimeout(nextSlide, delay)
     });
     para.addEventListener("mouseover", function(event) {
             window.clearTimeout(d)
     });
     switchBtn.addEventListener("mouseleave", function(event) {
-        setTimeout(nextSlide, 4000)
+        setTimeout(nextSlide, delay)
     });
     switchBtn.addEventListener("mouseenter", function(event) {
             window.clearTimeout(d)
@@ -106,14 +201,14 @@
     // const video = document.querySelector('video')
     // console.log(video)
     para.addEventListener('play',function(event) {
-        console.log(event)
+        console.log(event.target)
         window.clearTimeout(d)
     }, false);
     document.querySelector('video').addEventListener('ended', function(event) {
-        setTimeout(nextSlide, 4000)
+        setTimeout(nextSlide, delay)
     }, false);
 
-    setTimeout(nextSlide, 4000)
+    setTimeout(nextSlide, delay)
 </script>
 
 </body>
